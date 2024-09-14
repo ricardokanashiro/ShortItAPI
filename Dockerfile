@@ -1,11 +1,14 @@
-FROM node:16
+FROM node:18
 
-WORKDIR /usr/app
+WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
-COPY ./ ./
+COPY . .
+
+RUN npm install -g ts-node-dev
 
 EXPOSE 4444
 

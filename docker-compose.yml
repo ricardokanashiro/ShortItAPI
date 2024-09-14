@@ -4,11 +4,11 @@ services:
 
   app:
     build: .
-    command: npm run server
     ports:
       - "4444:4444"
-    volumes: 
-    - .:/usr/app
+    volumes:
+      - .:/app
+      - /app/node_modules
 
   db:
     image: postgres
@@ -20,12 +20,12 @@ services:
       POSTGRES_PASSWORD: postgres_password
       POSTGRES_DB: shortItDB
   
-  pgadmin: 
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - "5050:80"
+  # pgadmin: 
+  #   image: dpage/pgadmin4:latest
+  #   container_name: pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #   ports:
+  #     - "5050:80"
 
