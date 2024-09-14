@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  app:
+    build: .
+    command: npm run server
+    ports:
+      - "4444:4444"
+    volumes: 
+    - .:/usr/app
+
+  db:
+    image: postgres
+    container_name: shortItDB
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: shortItDB
+  
+  pgadmin: 
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+
